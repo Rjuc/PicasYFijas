@@ -10,7 +10,7 @@ def NumClave():
     clave = ''.join(str(d) for d in opciones[:4])
     return clave
 
-def calcular_picas_y_fijas(clave, intento):
+def calcularPicasYFijas(clave, intento):
     fijas = 0
     picas = 0
     
@@ -23,21 +23,16 @@ def calcular_picas_y_fijas(clave, intento):
     
     return picas, fijas
 
-def jugar_picas_y_fijas():
-    """
-    Simula el juego de picas y fijas. El jugador tiene 12 intentos
-    para adivinar el número clave.
-    """
-    print("¡Bienvenido al juego de Picas y Fijas!")
-    print("Debes adivinar un número de 4 dígitos únicos.")
-    print("Tienes un máximo de 12 intentos. ¡Buena suerte!")
-
+def jugarPicasYFijas():
+    print("¡Vamos a jugar Picas y Fijas como en clase!")
+    #ahora ya nestá todo preparado para jugar
     clave = NumClave()
     intentos = 0
-    max_intentos = 12
+    maxIntentos = 12
 
-    while intentos < max_intentos:
-        intento = input(f"Intento {intentos + 1}/{max_intentos}. Ingresa un número de 4 dígitos: ")
+    #En este bloque while, se pide que se itnente adivenar, también se hace énfasis en que debe ser un número de 4 dígitos únicos entre si, o volverá a pedir el número.
+    while intentos < maxIntentos:
+        intento = input(f"Intento {intentos + 1}/{maxIntentos}. Ingresa un número de 4 dígitos: ")
 
         # Validar que el intento sea correcto
         if len(intento) != 4 or not intento.isdigit() or len(set(intento)) != 4:
@@ -46,21 +41,28 @@ def jugar_picas_y_fijas():
 
         intentos += 1
 
-        # Calcular picas y fijas
-        picas, fijas = calcular_picas_y_fijas(clave, intento)
+        # Se utiliza la función para calcular que tal fué en el intento
+        picas, fijas = calcularPicasYFijas(clave, intento)
 
         # Mostrar resultados del intento
         print(f"Picas: {picas}, Fijas: {fijas}")
 
         # Verificar si el jugador ganó
         if intento == clave:
+            match intento:
+                case 1:
+                    print("Excelente, eres un maestro estas fuera del alcance de los demás")
+                case 2 | 3:
+                    print("Muy bueno, puedes ser un gran competidor")
+
+                
             print(f"¡Felicidades! Adivinaste el número clave {clave} en {intentos} intentos.")
             return
 
     print(f"Lo siento, alcanzaste el máximo de intentos. El número clave era {clave}. ¡Mejor suerte la próxima vez!")
 
 # Inicia el juego
-jugar_picas_y_fijas()
+jugarPicasYFijas()
 
     
 """1. Para iniciar el juego el programa debe generar un número CLAVE de cuatro cifras aleatoriamente sin repetir decimales. 
@@ -76,4 +78,7 @@ Si logra tener las 4 fijas con menos de cuatro intentos: «Muy bueno, puedes ser
 Si lo logra con menos de ocho intentos: «Bien, estas progresando debes buscar tus límites».
 Si lo logra con menos de diez intentos: «Regular, Aún es largo el camino por recorrer».
 Si no lo consigue en los doce intentos: «Mal, este juego no es para ti».
+git add picas_y_fijas.py
+git commit -m "Descripción del cambio"
+git push
  """""
