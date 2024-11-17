@@ -34,9 +34,9 @@ def jugarPicasYFijas():
     while intentos < maxIntentos:
         intento = input(f"Intento {intentos + 1}/{maxIntentos}. Ingresa un número de 4 dígitos: ")
 
-        # Validar que el intento sea correcto
-        if len(intento) != 4 or not intento.isdigit() or len(set(intento)) != 4:
-            print("El número ingresado debe tener 4 dígitos únicos. Intenta de nuevo.")
+        # Validar que el intento sea correcto, también podríamos agregar que l el número a ingresar sea de 4valores únicos, pero eso podría arruinar algunas estratégias
+        if len(intento) != 4 or not intento.isdigit():
+            print("El valor ingreasado debe ser un número, y debe contener 4 dígitos")
             continue
 
         intentos += 1
@@ -47,19 +47,26 @@ def jugarPicasYFijas():
         # Mostrar resultados del intento
         print(f"Picas: {picas}, Fijas: {fijas}")
 
-        # Verificar si el jugador ganó
+        # En este boque, se entra sòlo si el jugador gana
         if intento == clave:
-            match intento:
+            #ya que ha gaanado, se define cuantos intentoas le tomó, para mostrar el mensaje adecuado
+            match intentos:
                 case 1:
                     print("Excelente, eres un maestro estas fuera del alcance de los demás")
                 case 2 | 3:
                     print("Muy bueno, puedes ser un gran competidor")
+                case 4 | 5 | 6 | 7:
+                    print("Bien, estas progresando debes buscar tus límites")
+                case 8 | 9:
+                    print("Regular, Aún es largo el camino por recorrer")
+                case _:
+                    print("Resultado inesperado, pero ¡ganaste!")
 
                 
-            print(f"¡Felicidades! Adivinaste el número clave {clave} en {intentos} intentos.")
+            print(f"Adivinaste el número clave {clave} en {intentos} intentos.")
             return
 
-    print(f"Lo siento, alcanzaste el máximo de intentos. El número clave era {clave}. ¡Mejor suerte la próxima vez!")
+    print(f"Mal, este juego no es para ti. El número clave era {clave}.")
 
 # Inicia el juego
 jugarPicasYFijas()
