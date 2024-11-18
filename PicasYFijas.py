@@ -36,7 +36,7 @@ def jugarPicasYFijas():
 
         # Validar que el intento sea correcto, también podríamos agregar que l el número a ingresar sea de 4valores únicos, pero eso podría arruinar algunas estratégias
         if len(intento) != 4 or not intento.isdigit():
-            print("El valor ingreasado debe ser un número, y debe contener 4 dígitos")
+            print("El valor ingresado debe ser un número, y debe contener 4 dígitos")
             continue
 
         intentos += 1
@@ -70,10 +70,3 @@ def jugarPicasYFijas():
 
 # la función principal se llama al final para evitar errores de declaración temprana
 jugarPicasYFijas()
-
-    
-"""
-git add picas_y_fijas.py
-git commit -m "Descripción del cambio"
-git push
- """""
