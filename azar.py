@@ -1,5 +1,13 @@
 import random
 
+def adivinar():
+     # se toma el intento de prediccion, se eliminan espacios y mayúsculas
+    while True:
+        prediccion = input("¿Qué predices? (mayor/menor/exacto): ").strip().lower()
+        if prediccion in ["mayor", "menor", "exacto"]:
+            return prediccion
+        print("Predicción inválida. Debes elegir 'mayor', 'menor' o 'exacto'.\n")
+
 def Chancer():
     print("¡Bienvenido a Chancer!")
     print("Adivina si el próximo número será mayor, menor o exacto para ganar fichas.")
@@ -27,11 +35,7 @@ def Chancer():
             print("Entrada inválida. Debes ingresar un número.\n")
             continue
 
-        # se toma el intento d eprediccion, se eliminan espacios y mayúsculas
-        prediccion = input("¿Qué predices? (mayor/menor/exacto): ").strip().lower()
-        if prediccion not in ["mayor", "menor", "exacto"]:
-            print("Predicción inválida. Debes elegir 'mayor', 'menor' o 'exacto'.\n")
-            continue
+        prediccion = adivinar()
 
         # Este es el número que debieron adivinar, se genera también aleatoriamente
         numeroSiguiente = random.randint(rangoMin, rangoMax)
